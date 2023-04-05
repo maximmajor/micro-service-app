@@ -3,13 +3,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
 const express_1 = tslib_1.__importDefault(require("express"));
 const app = (0, express_1.default)();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 const mongoose = require("mongoose");
 const product_1 = tslib_1.__importDefault(require("./routes/product"));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use("/products", product_1.default);
-mongoose.connect("mongodb+srv://koyonation:Oyok1234567oyoK@cluster0.tv7vs.mongodb.net/testingMicroServices?retryWrites=true&w=majority", {
+mongoose.connect(process.env.mongodbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
